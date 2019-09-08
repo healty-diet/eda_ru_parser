@@ -47,6 +47,9 @@ optional arguments:
 
 In the destination folder a separate file will be created for every recipe. File names will be "0.json", "1.json" etc.
 
+**Please note** that this application requires a Tor browser to be running during the whole process of parsing.
+This is required because of proxy usage.
+
 ## LICENSE
 
 Calorizator parser is licensed under the MIT License.
