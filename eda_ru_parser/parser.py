@@ -120,7 +120,13 @@ def parse_recipe_from_json(element: JSONValue) -> Optional[JSONValue]:
     ]
     for field, expected_type in expected_fields:
         if not element.get(field) or not isinstance(element[field], expected_type):
-            continue
+            return None
+
+    # Verify nutrition dict.
+    nutrition_fields = ["calories", "proteinContent", "fatContent", "carbohydrateContent"]
+    for field in nutrition_fields:
+        if not element["nutrition"].get(field):
+            return None
 
     recipe["name"] = element["name"]
     recipe["serves_amount"] = int(element["recipeYield"].split()[0])
