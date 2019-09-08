@@ -20,8 +20,11 @@ class StepResult(Enum):
 
 
 def run_with_proxy(gen: Generator[Any, Optional[StepResult], None]) -> List[Any]:
-    """ Runs the given generator with the use of tor.
-    On each step """
+    """
+    Runs the given generator with the use of tor.
+    On each step a value is retrieved from the generator, and StepResult is sent to it.
+    StepResult is OK if no HTTP errors occured and ERROR otherwise.
+    """
     err = 0
     values: List[Any] = []
     with Controller.from_port(port=9151) as controller:

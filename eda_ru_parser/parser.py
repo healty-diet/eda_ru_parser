@@ -62,7 +62,10 @@ def random_headers():
 
 
 def get_recipes_json(response: requests.Response) -> JSONType:
-    """ Function that gets <div id='main-content'>..</div> from the response. """
+    """
+    Function that gets <script type="application=ld+json">..</script> from the response
+    and then parses it as json.
+    """
     soup = BeautifulSoup(response.content)
 
     return json.loads(soup.find("script", {"type": "application/ld+json"}).text)
@@ -172,7 +175,11 @@ def load_and_parse_page(page: int) -> List[JSONValue]:
 
 
 def parser_generator(pages_amount: int) -> Generator[List[JSONValue], Optional[StepResult], None]:
-    """ Generator that retrieves information from eda.ru """
+    """
+    Generator that retrieves information from eda.ru.
+    On each step one page from eda.ru is loaded and parsed.
+    If loading failed, generator attempts to reload the same page until retries_amount is reached.
+    """
     retries_amount = 10
     for page in range(1, pages_amount + 1):
         result: Optional[StepResult] = StepResult.OK
