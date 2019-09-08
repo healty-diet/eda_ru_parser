@@ -10,11 +10,42 @@ Data is parsed to the json format and written to the file provided by the user.
 
 ## Examples
 
-TODO
+Example of the result .json file:
+
+```json
+{
+  "name": "Example name",
+  "serves_amount": 4,
+  "ingredients": [
+    {
+      "example_ingredient": {
+        "example_measure": 1.0
+      }
+    }
+  ],
+  "text": "1. Do something\n2. Do something else",
+  "energy_value_per_serving": {
+    "calories": "245",
+    "protein": "20",
+    "fat": "11",
+    "carbohydrates": "14"
+  }
+}
+```
 
 ## Usage
 
-TODO
+```sh
+usage: eda_ru_parser [-h] --output OUTPUT
+
+Parser for eda.ru site
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --output OUTPUT  name of the output folder
+```
+
+In the destination folder a separate file will be created for every recipe. File names will be "0.json", "1.json" etc.
 
 ## LICENSE
 
