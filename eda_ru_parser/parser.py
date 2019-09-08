@@ -169,7 +169,7 @@ def parser_generator(pages_amount: int) -> Generator[List[JSONValue], Optional[S
     """ Generator that retrieves information from eda.ru """
     retries_amount = 10
     for page in range(1, pages_amount + 1):
-        result: StepResult = StepResult.OK
+        result: Optional[StepResult] = StepResult.OK
         for _ in range(retries_amount):
             result = yield load_and_parse_page(page)
 
