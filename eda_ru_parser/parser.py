@@ -8,8 +8,7 @@ import random
 import requests
 from bs4 import BeautifulSoup
 
-# FIXME
-from proxy import StepResult, run_with_proxy
+from .proxy import StepResult, run_with_proxy
 
 EDA_RU_URL = "https://eda.ru/recepty"
 # This constant is discovered manually, it may change.
